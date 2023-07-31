@@ -4,9 +4,8 @@
     "dev": "cross-env NODE_ENV=development next dev",
     "build": "cross-env NODE_ENV=production next build",
     "start": "cross-env NODE_ENV=production next start",
-    "test": "cross-env NODE_ENV=test yarn graphql-codegen && jest",
-    "generate:schema": "prisma generate --schema lib/server/dbs/mongoschema.prisma && prisma generate --schema lib/server/dbs/sqlschema.prisma",
-    "generate:migrate": "prisma db push --schema lib/server/dbs/sqlschema.prisma"
+    "generate:schema": "dotenv -e .env.local -- prisma generate --schema lib/server/dbs/mongoschema.prisma && dotenv -e .env.local --  prisma generate --schema lib/server/dbs/sqlschema.prisma",
+    "generate:migrate": "dotenv -e .env.local -- prisma db push --schema lib/server/dbs/sqlschema.prisma"
   },
   "dependencies": {
     "@chakra-ui/next-js": "^2.1.5",
@@ -29,6 +28,7 @@
     "autoprefixer": "^10.4.14",
     "babel-jest": "27.2.5",
     "cross-env": "^7.0.3",
+    "dotenv-cli": "^7.2.1",
     "jest": "^27.2.5",
     "postcss": "^8.4.27",
     "prisma": "^5.0.0",

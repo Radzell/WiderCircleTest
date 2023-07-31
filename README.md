@@ -47,10 +47,10 @@ To run this project, follow these steps:
     The project requires environment variables. Copy the example `.env` file:
 
     ```bash
-    cp .env.example .env
+    cp .env.example .env.local
     ```
 
-    Then, fill in the necessary variables in the `.env` file. Make sure to replace the `MONGODB_URI` and `MONGODB_DB` values with your actual MongoDB URI and database name.
+    Then, fill in the necessary variables in the `.env` file.
 
 4. **Start the development server**
 
@@ -90,6 +90,25 @@ Before running the application, you need to generate the Prisma schema and migra
     yarn generate:migrate
     ```
 
+## Weather API Key
+
+This application requires an API key from the Weather API. Follow these steps to get one:
+
+1. Visit the [Weather API website](https://weatherapi.com/).
+
+2. If you don't have an account, sign up for a free one. If you do, log in.
+
+3. Once you are logged in, navigate to your dashboard.
+
+4. Your API key should be visible on your dashboard, or under a section named "API Keys." 
+
+5. Copy the key and paste it into your `.env.local` file in this format:
+    ```
+    WEATHER_API_KEY=your_api_key_here
+    ```
+   Replace `your_api_key_here` with the API key you obtained from the Weather API.
+
+
 ## Scripts
 
 The project uses the following scripts:
@@ -97,7 +116,6 @@ The project uses the following scripts:
 - `dev`: Start the development server.
 - `build`: Build the production version of the app.
 - `start`: Start the production server.
-- `test`: Run tests using Jest and GraphQL Codegen.
 - `generate:schema`: Generate Prisma client and schema files.
 - `generate:migrate`: Push database changes with Prisma.
 

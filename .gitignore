@@ -34,13 +34,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# graphql-let
-.cache
-*.graphql.d.ts
-*.graphqls.d.ts
-.cache
-
 .env*
 
-lib/server/resolvers-types.ts
-lib/server/graphql-operations.ts
