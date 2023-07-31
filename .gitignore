@@ -40,5 +40,7 @@ next-env.d.ts
 *.graphqls.d.ts
 .cache
 
-lib/resolvers-types.ts
-lib/graphql-operations.ts
+.env*
+
+lib/server/resolvers-types.ts
+lib/server/graphql-operations.ts

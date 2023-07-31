@@ -1,39 +1,41 @@
 {
   "private": true,
   "scripts": {
-    "codegen": "graphql-codegen -w",
-    "dev": "yarn graphql-codegen && next",
-    "build": "yarn graphql-codegen && next build",
-    "test": "yarn graphql-codegen && jest",
-    "start": "next start"
+    "dev": "cross-env NODE_ENV=development next dev",
+    "build": "cross-env NODE_ENV=production next build",
+    "start": "cross-env NODE_ENV=production next start",
+    "test": "cross-env NODE_ENV=test yarn graphql-codegen && jest",
+    "generate:schema": "prisma generate --schema lib/server/dbs/mongoschema.prisma && prisma generate --schema lib/server/dbs/sqlschema.prisma",
+    "generate:migrate": "prisma db push --schema lib/server/dbs/sqlschema.prisma"
   },
   "dependencies": {
-    "@apollo/client": "^3.5.10",
-    "graphql-tag": "^2.12.6",
-    "@graphql-tools/load-files": "6.0.18",
-    "graphql-yoga": "three",
-    "@graphql-tools/merge": "6.0.18",
-    "@graphql-tools/schema": "6.0.18",
-    "graphql": "15.6.0",
+    "@chakra-ui/next-js": "^2.1.5",
+    "@chakra-ui/react": "^2.8.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@prisma/client": "5.0.0",
+    "framer-motion": "^10.15.0",
+    "mongodb": "^5.7.0",
     "next": "^12.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@graphql-codegen/typed-document-node": "^2.2.8",
-    "@graphql-codegen/cli": "2.13.7",
-    "@graphql-codegen/client-preset": "1.1.0",
-    "@graphql-codegen/typescript-resolvers": "^2.6.1",
     "@types/jest": "^27.0.2",
     "@types/mocha": "^9.0.0",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "@types/react-test-renderer": "^17.0.1",
+    "autoprefixer": "^10.4.14",
     "babel-jest": "27.2.5",
+    "cross-env": "^7.0.3",
     "jest": "^27.2.5",
+    "postcss": "^8.4.27",
+    "prisma": "^5.0.0",
     "react-test-renderer": "^17.0.1",
+    "tailwindcss": "^3.3.3",
+    "ts-node": "10.8.0",
     "typescript": "^4.6.3",
-    "yaml-loader": "0.6.0",
-    "ts-node": "10.8.0"
+    "yaml-loader": "0.6.0"
   }
 }

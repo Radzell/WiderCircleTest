@@ -1,43 +1,117 @@
-# TypeScript and GraphQL Example
+# WiderCircleTest
 
-One of the strengths of GraphQL is [enforcing data types on runtime](https://graphql.github.io/graphql-spec/June2018/#sec-Value-Completion). Further, TypeScript and [GraphQL Code Generator](https://graphql-code-generator.com/) (graphql-codegen) make it safer by typing data statically, so you can write truly type-protected code with rich IDE assists.
+This project is a test task using Next.js, MongoDB, and MySQL. It illustrates how to structure a project with microservices in Next.js. 
 
-This template gives you the best start to use GraphQL with fully typed queries (client-side) and resolvers (server-side), all this with minimum bundle size 📦
+## Prerequisites
 
-```tsx
-import { useQuery } from '@apollo/client'
-import { ViewerDocument } from 'lib/graphql-operations'
+You will need the following tools installed on your computer:
 
-const News = () => {
-  // Typed already️⚡️
-  const {
-    data: { viewer },
-  } = useQuery(ViewerDocument)
+- [Node.js](https://nodejs.org/en/) v14 or above
+- [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/)
+- [MongoDB](https://www.mongodb.com/try/download/community)
+- [MySQL/PlanetScale](https://planetscale.com/)
+- [Prisma](https://www.prisma.io/)
 
-  return <div>{viewer.name}</div>
-}
-```
+## Setup
 
-## Deploy your own
+To run this project, follow these steps:
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-typescript-graphql)
+1. **Clone the repository**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript-graphql&project-name=with-typescript-graphql&repository-name=with-typescript-graphql)
+    Using SSH:
+    ```bash
+    git clone git@github.com:your-username/WiderCircleTest.git
+    ```
 
-## How to use
+    Using HTTPS:
+    ```bash
+    git clone https://github.com/your-username/WiderCircleTest.git
+    ```
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+2. **Install dependencies**
 
-```bash
-npx create-next-app --example with-typescript-graphql with-typescript-graphql-app
-```
+    Navigate to the root directory of the project, then install the dependencies:
 
-```bash
-yarn create next-app --example with-typescript-graphql with-typescript-graphql-app
-```
+    Using yarn:
+    ```bash
+    yarn install
+    ```
 
-```bash
-pnpm create next-app --example with-typescript-graphql with-typescript-graphql-app
-```
+    Using npm:
+    ```bash
+    npm install
+    ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+3. **Set up environment variables**
+
+    The project requires environment variables. Copy the example `.env` file:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+    Then, fill in the necessary variables in the `.env` file. Make sure to replace the `MONGODB_URI` and `MONGODB_DB` values with your actual MongoDB URI and database name.
+
+4. **Start the development server**
+
+    Start the server with either yarn or npm:
+
+    Using yarn:
+    ```bash
+    yarn dev
+    ```
+
+    Using npm:
+    ```bash
+    npm run dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+5. **Generating Schema and Migrating the Database**
+
+Before running the application, you need to generate the Prisma schema and migrate the database. Prisma is a modern database toolkit that allows you to interact with databases using a type-safe API. To generate the Prisma schema and migrate your database, follow these steps:
+
+ - `Generate the Prisma Schema`
+
+    To generate the Prisma schema, run the following script:
+
+    ```bash
+    yarn generate:schema
+    ```
+
+    This script will generate the Prisma client and schema files based on the defined schema files in the `lib/server/dbs` directory. The Prisma client provides a type-safe database client for querying your database.
+
+  - `Migrate the Database`
+
+    To migrate the database and apply any pending changes, run the following script:
+
+    ```bash
+    yarn generate:migrate
+    ```
+
+## Scripts
+
+The project uses the following scripts:
+
+- `dev`: Start the development server.
+- `build`: Build the production version of the app.
+- `start`: Start the production server.
+- `test`: Run tests using Jest and GraphQL Codegen.
+- `generate:schema`: Generate Prisma client and schema files.
+- `generate:migrate`: Push database changes with Prisma.
+
+## Dependencies
+
+
+The project uses the following main dependencies:
+
+- [@chakra-ui/next-js](https://github.com/chakra-ui/chakra-ui/tree/main/packages/next): Chakra UI components for Next.js.
+- [@chakra-ui/react](https://github.com/chakra-ui/chakra-ui/tree/main/packages/react): Chakra UI components for React.
+- [@prisma/client](https://www.prisma.io/docs/concepts/components/prisma-client): Prisma client for database access.
+- [mongodb](https://mongodb.github.io/node-mongodb-native/): MongoDB driver for Node.js.
+- [next](https://nextjs.org/): React framework for building server-side rendered and static websites.
+- [react](https://reactjs.org/): JavaScript library for building user interfaces.
+- [react-dom](https://reactjs.org/docs/react-dom.html): Entry point for working with the DOM in React applications.
+
+Please refer to the \`package.json\` file for a full list of all dependencies and devDependencies.
