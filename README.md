@@ -20,12 +20,12 @@ To run this project, follow these steps:
 
     Using SSH:
     ```bash
-    git clone git@github.com:your-username/WiderCircleTest.git
+    git clone git@github.com:Radzell/WiderCircleTest.git
     ```
 
     Using HTTPS:
     ```bash
-    git clone https://github.com/your-username/WiderCircleTest.git
+    git clone https://github.com/Radzell/WiderCircleTest.git
     ```
 
 2. **Install dependencies**
